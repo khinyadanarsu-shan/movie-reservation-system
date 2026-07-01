@@ -1,0 +1,71 @@
+*{box-sizing:border-box}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Helvetica,Arial,sans-serif;margin:0;background:#0b0e14;color:#e7e9ee}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;background:#111520;border-bottom:1px solid #1b2130}
+.nav .brand{font-weight:700;letter-spacing:.5px}
+.nav a,.nav .hello{color:#d6d9e0;text-decoration:none;margin-left:14px}
+.container{max-width:1100px;margin:24px auto;padding:0 16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+.card{background:#141a25;border:1px solid #1e2434;border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.25)}
+.card img{width:100%;height:340px;object-fit:cover}
+.card-body{padding:14px}
+.card h3{margin:6px 0}
+.muted{opacity:.7;font-size:.9rem}
+.slots{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.slot{display:inline-block;padding:8px 10px;background:#1a2233;border:1px solid #2a3450;border-radius:10px;color:#dfe3ec;text-decoration:none}
+.auth{max-width:420px;margin:60px auto;background:#141a25;padding:20px;border-radius:14px;border:1px solid #1e2434}
+.auth input,.auth textarea,.auth select{width:100%;padding:10px;margin:6px 0;background:#0f1420;color:#eaeef7;border:1px solid #1f2a42;border-radius:10px}
+.auth button{width:100%;padding:10px;border-radius:10px;border:0;background:#3b82f6;color:white;font-weight:600}
+.error{background:#3a0d12;color:#ffd2d7;padding:10px;border-radius:10px;margin-bottom:8px}
+.table{width:100%;border-collapse:collapse;background:#141a25;border:1px solid #1e2434;border-radius:12px;overflow:hidden}
+.table th,.table td{padding:10px;border-bottom:1px solid #1e2434}
+.seats .row{display:flex;align-items:center;margin:6px 0}
+.rowlabel{display:inline-block;width:28px;opacity:.7}
+.seat{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;margin:3px;border-radius:8px;background:#1a2233;border:1px solid #2a3450}
+.seat input{display:none}
+.seat.taken{opacity:.35;filter:grayscale(1)}
+button{padding:10px 14px;border-radius:10px;border:0;background:#22c55e;color:#0b0e14;font-weight:700}
+/* Seat grid base */
+.seats { display: grid; gap: 10px; }
+.row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.rowlabel { width: 18px; color: #8fa1c0; }
+
+/* Seat button */
+.seat{
+  position: relative;
+  width: 40px; height: 40px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 10px;
+  background: #1e2633;  /* normal */
+  color: #c3d1ea;
+  font-weight: 600;
+  cursor: pointer;
+  user-select: none;
+  transition: background .15s ease, color .15s ease, transform .05s ease;
+}
+.seat:hover { background: #2a3446; }
+.seat:active { transform: scale(0.98); }
+
+/* Hide the native checkbox but keep it focusable */
+.seat > input{
+  position: absolute; inset: 0;
+  opacity: 0; pointer-events: none;
+}
+
+/* CLICKED (selected) — pure CSS using :has(...) */
+.seat:has(input:checked){
+  background: #00c853;   /* green */
+  color: #fff;
+  box-shadow: 0 0 0 2px #00c85333 inset;
+}
+
+/* Focus ring (keyboard users) */
+.seat:has(input:focus-visible){
+  outline: 2px solid #5aa2ff; outline-offset: 2px;
+}
+
+/* Booked/disabled seats */
+.seat.taken{
+  background: #3a3f4a !important; color: #8b93a6 !important;
+  cursor: not-allowed;
+}
+.seat.taken > input{ display: none; }  /* cannot be selected */
