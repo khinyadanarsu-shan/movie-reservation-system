@@ -22,7 +22,7 @@ Import the database.sql file into MySQL.
 Update the database configuration in config.php.
 Start Apache and MySQL in XAMPP.
 Open the project in your browser:
-http://localhost/movie-reservation-system
+http://localhost/cinemax
 Project Structure
 movie-reservation-system/
 ├── index.php
